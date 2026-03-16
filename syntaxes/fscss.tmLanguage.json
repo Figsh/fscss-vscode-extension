@@ -1,1 +1,120 @@
+{
+  "name": "FSCSS",
+  "scopeName": "source.fscss",
+  "patterns": [
+
+    {
+      "comment": "Double slash comments",
+      "match": "//.*$",
+      "name": "comment.line.double-slash.fscss"
+    },
+
+    {
+      "comment": "FSCSS control directives",
+      "match": "@(define|import|arr|use|random|ext|event|fun)\\b",
+      "name": "keyword.control.fscss"
+    },
+    {
+      "comment": "FSCSS define function name",
+      "match": "@define\\s+([a-zA-Z_][a-zA-Z0-9_-]*)",
+      "captures": {
+        "1": {
+          "name": "entity.name.function.fscss"
+        }
+      }
+    },
+
+    {
+      "comment": "FSCSS array declaration",
+      "match": "@arr\\s+([a-zA-Z_][a-zA-Z0-9_-]*)",
+      "captures": {
+        "1": {
+          "name": "variable.other.array.fscss"
+        }
+      }
+    },
+
+    {
+      "comment": "FSCSS built-in functions",
+      "match": "\\b(exec|find|pick|length|count|copy|str|re|store|join|prefix|surround|unit|block|num|rpt|mx|mxs)(?=\\s*\\()",
+      "name": "support.function.fscss"
+    },
+
+    {
+      "comment": "FSCSS method helpers",
+      "match": "\\.(length|last|reverse|first|list|indices|randint|segment|map|sum|unique|sort|shuffle|min|max|obj|xfscss)",
+      "name": "entity.name.function.method.fscss"
+    },
+
+    {
+      "comment": "FSCSS variables with optional force operator",
+      "match": "\\$(\\/)?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
+      "captures": {
+        "0": {
+          "name": "variable.other.fscss"
+        },
+        "1": {
+          "name": "keyword.operator.force.fscss"
+        }
+      }
+    },
+
+    {
+      "comment": "Special keywords",
+      "match": "\\b(_init|if|el-if|el|return|_log|from|as)\\b",
+      "name": "keyword.other.special.fscss"
+    },
+
+    {
+      "comment": "Force operator",
+      "match": "!",
+      "name": "keyword.operator.force.fscss"
+    },
+    
+     {
+   "comment": "Variable fallback operator",
+   "match": "\\|\\|",
+   "name": "keyword.variable.fallback.fscss"
+     },
+
+    {
+      "comment": "FSCSS shorthand numeric function (e.g. %2(...))",
+      "match": "%[0-9]+(?=\\()",
+      "name": "constant.numeric.fscss"
+    },
+        {
+      "comment": "FSCSS Functions name",
+      "match": "@[_-—\\w]+(?=\\()",
+      "name": "keyword.function.fscss"
+    },
+
+    {
+      "comment": "Backtick code injection",
+      "name": "string.template.fscss",
+      "begin": "`",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.fscss"
+        }
+      },
+      "end": "`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.fscss"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.css"
+        }
+      ]
+    },
+
+    {
+      "comment": "Fallback to CSS syntax",
+      "include": "source.css"
+    }
+
+  ]
+}
 

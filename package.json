@@ -1,7 +1,7 @@
 {
   "name": "fscss",
   "displayName": "FSCSS Support",
-  "publisher": "Figsh",
+  "publisher": "figsh",
   "description": "Syntax highlighting and tools for FSCSS",
   "version": "1.0.0",
   "engines": {
@@ -13,7 +13,12 @@
   "type": "git",
   "url": "https://github.com/Figsh/fscss-vscode-extension"
 },
-"homepage": "https://fscss.devtem.org", 
+  "homepage": "https://fscss.devtem.org", 
+  "keywords": ["fscss", "css", "preprocessor", "syntax", "xfscss", "figsh"],
+  "license": "MIT", 
+  "bugs": {
+     "url": "https://github.com/Figsh/fscss-vscode-extension/issues"
+  }, 
    "contributes": {
     "languages": [
       {

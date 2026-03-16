@@ -1,0 +1,19 @@
+name: Build VSIX
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install
+      - name: Package Extension
+        run: npx vsce package --no-dependencies
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fscss-extension
+          path: "*.vsix"

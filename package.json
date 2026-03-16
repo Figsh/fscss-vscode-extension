@@ -1,32 +1,37 @@
 {
   "name": "fscss",
   "displayName": "FSCSS Support",
+  "publisher": "Figsh",
   "description": "Syntax highlighting and tools for FSCSS",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.80.0"
   },
-  "icon": "./icons/fscss-logo.png", 
-  "categories": ["Programming Languages"],
-  "contributes": {
+  "icon": "icons/fscss-logo.png", 
+  "categories": ["Programming Languages", "Snippets"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Figsh/fscss-vscode-extension"
+  },
+   "contributes": {
     "languages": [
       {
         "id": "fscss",
         "aliases": ["FSCSS", "fscss"],
         "extensions": [".fscss", ".xfscss"],
-        "configuration": "./language-configuration.json", 
+        "configuration": "./language-configuration.json",
         "icon": {
-          "light": "./icons/fscss-light.svg",
-          "dark": "./icons/fscss-dark.svg"
+          "light": "icons/fscss-logo.png",
+          "dark": "icons/fscss-logo.png"
         }
       }
     ],
     "snippets": [
-  {
-    "language": "fscss",
-    "path": "./snippets/fscss.json"
-  }
-], 
+      {
+        "language": "fscss",
+        "path": "./snippets/fscss.json"
+      }
+    ], 
     "grammars": [
       {
         "language": "fscss",
@@ -35,8 +40,5 @@
       }
     ]
   },
-  "main": "./extension.js",
-  "activationEvents": [
-    "onLanguage:fscss"
-  ]
+  "main": "./extension.js"
 }

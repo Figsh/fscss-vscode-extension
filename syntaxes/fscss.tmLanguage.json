@@ -87,7 +87,34 @@
       "match": "@[_-—\\w]+(?=\\()",
       "name": "keyword.function.fscss"
     },
-
+    {
+  "comment": "String literals",
+  "name": "string.quoted.fscss",
+  "patterns": [
+    {
+      "name": "string.quoted.double.fscss",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.fscss",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "name": "string.quoted.single.fscss",
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "name": "constant.character.escape.fscss",
+          "match": "\\\\."
+        }
+      ]
+    }
+  ]
+}, 
     {
       "comment": "Backtick code injection",
       "name": "string.template.fscss",

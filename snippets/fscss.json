@@ -1,4 +1,36 @@
 {
+  "FSCSS Variable": {
+    "prefix": "var",
+    "body": [
+      "\\$${1:name}: ${2:value};"
+    ],
+    "description": "Declare a reusable FSCSS variable"
+  },
+
+  "FSCSS Variable Use": {
+    "prefix": "varu",
+    "body": [
+      "\\$${1:name}!"
+    ],
+    "description": "Reference/force-evaluate an FSCSS variable with !"
+  },
+
+  "FSCSS Str Prompt Variable": {
+    "prefix": "str",
+    "body": [
+      "str(${1:label}, \"${2:css properties}\")"
+    ],
+    "description": "Define a text-prompt variable that expands inline as CSS"
+  },
+
+  "FSCSS Str Use": {
+    "prefix": "stru",
+    "body": [
+      "${1:label}"
+    ],
+    "description": "Use a str() prompt variable inline inside a selector block"
+  },
+
   "FSCSS Define Function": {
     "prefix": "def",
     "body": [
@@ -6,41 +38,336 @@
       "  ${3}",
       "}"
     ],
-    "description": "Create an FSCSS function"
+    "description": "Define a reusable FSCSS function block (@define)"
   },
-  
-  "FSCSS Import": {
+
+  "FSCSS Define Call": {
+    "prefix": "defc",
+    "body": [
+      "@${1:name}(${2:args})"
+    ],
+    "description": "Call / invoke a previously @defined FSCSS function"
+  },
+
+  "FSCSS Use Block": {
+    "prefix": "use",
+    "body": [
+      "@use(${1:arg})"
+    ],
+    "description": "Apply styles to a selector from within a @define block"
+  },
+
+
+  "FSCSS Fun Block": {
+    "prefix": "fun",
+    "body": [
+      "@fun(${1:name}){",
+      "  ${2}",
+      "}"
+    ],
+    "description": "Create a named @fun block of reusable CSS properties"
+  },
+
+  "FSCSS Fun Use (full)": {
+    "prefix": "funu",
+    "body": [
+      "@fun.${1:name}"
+    ],
+    "description": "Apply all properties from an @fun block"
+  },
+
+  "FSCSS Fun Use (property)": {
+    "prefix": "funp",
+    "body": [
+      "@fun.${1:name}.${2:property}"
+    ],
+    "description": "Pull a single property out of an @fun block"
+  },
+
+  "FSCSS Fun Use (value)": {
+    "prefix": "funv",
+    "body": [
+      "property: @fun.${1:name}.${2:property}.value;"
+    ],
+    "description": "Use only the value of a specific @fun property"
+  },
+
+  "FSCSS Import (named)": {
     "prefix": "imp",
     "body": [
-      "@import((${1:module}) from \"${2:path}\")"
+      "@import((${1:module}) from ${2:lib-or-path})"
     ],
-    "description": "Import FSCSS module"
+    "description": "Named import of one module from a built-in lib or path"
   },
-  
+
+  "FSCSS Import (multi-named)": {
+    "prefix": "impm",
+    "body": [
+      "@import((",
+      "  ${1:mod-a},",
+      "  ${2:mod-b}",
+      ") from ${3:lib-or-path})"
+    ],
+    "description": "Import multiple named modules from a lib or path"
+  },
+
+  "FSCSS Import (alias)": {
+    "prefix": "impa",
+    "body": [
+      "@import((${1:module} as ${2:alias}) from ${3:lib-or-path})"
+    ],
+    "description": "Import a module with an alias to avoid name clashes"
+  },
+
+  "FSCSS Import (wildcard)": {
+    "prefix": "impw",
+    "body": [
+      "@import((*) from ${1:lib-or-path})"
+    ],
+    "description": "Import everything from a lib (wildcard import)"
+  },
+
+  "FSCSS Import (remote URL)": {
+    "prefix": "impr",
+    "body": [
+      "@import((${1:module}) from \"${2:https://cdn.example/file.fscss}\")"
+    ],
+    "description": "Import from a remote CDN or absolute URL"
+  },
+
   "FSCSS Array": {
     "prefix": "arr",
     "body": [
-      "@arr ${1:name}[${2:values}]"
+      "@arr ${1:name}[${2:val1, val2, val3}]"
     ],
-    "description": "Create FSCSS array"
+    "description": "Initialize a named FSCSS array"
   },
-  
-  "FSCSS Use": {
+
+  "FSCSS Array Loop": {
+    "prefix": "arrl",
+    "body": [
+      "${1:selector-}@arr.${2:name}[]{",
+      "  property: @arr.${2:name};",
+      "}"
+    ],
+    "description": "Generate iterative CSS blocks from every array item"
+  },
+
+  "FSCSS Array Random (per-element)": {
+    "prefix": "arrr",
+    "body": [
+      "@random(@arr.${1:name})"
+    ],
+    "description": "Pick a different random value from an array per selector"
+  },
+
+  "FSCSS Array Random (global compile)": {
+    "prefix": "arrri",
+    "body": [
+      "@arr.${1:name}!.randint"
+    ],
+    "description": "Pick ONE random value from an array for the whole compile"
+  },
+
+  "FSCSS Array Join": {
+    "prefix": "ajon",
+    "body": [
+      "@arr.${1:name}!.join(${2:,})"
+    ],
+    "description": "Join array elements into a single string with a separator"
+  },
+
+  "FSCSS Array List": {
+    "prefix": "arls",
+    "body": [
+      "@arr.${1:name}!.list"
+    ],
+    "description": "Output all items of an array as a space-separated list"
+  },
+
+
+  "FSCSS Random Picker": {
+    "prefix": "rand",
+    "body": [
+      "@random([${1:val1, val2, val3}])"
+    ],
+    "description": "Pick a random value from an inline list at compile time"
+  },
+
+  "FSCSS Random from Array": {
+    "prefix": "randa",
+    "body": [
+      "@random(@arr.${1:name})"
+    ],
+    "description": "Pick a random value from a named array per invocation"
+  },
+
+
+  "FSCSS Keyframe (single selector)": {
     "prefix": "key",
     "body": [
-      "$(@keyframes ${1:name}, ${2:selector} &[3s linear infinite alternate]){",
+      "\\$(@keyframes ${1:name}, ${2:.selector} &[${3:3s linear infinite}]){",
+      "  from{",
+      "    ${4}",
+      "  }",
+      "  to{",
+      "    ${5}",
+      "  }",
+      "}"
+    ],
+    "description": "Define @keyframes and assign animation to one selector"
+  },
+
+  "FSCSS Keyframe (multi-selector)": {
+    "prefix": "keym",
+    "body": [
+      "\\$(@keyframes ${1:name}, ${2:.sel-a}, ${3:.sel-b} &[${4:3s ease-in infinite alternate}]){",
+      "  from{",
+      "    ${5}",
+      "  }",
+      "  to{",
+      "    ${6}",
+      "  }",
+      "}"
+    ],
+    "description": "Define @keyframes and assign animation to multiple selectors at once"
+  },
+
+  "FSCSS Shorthand %n": {
+    "prefix": "pct",
+    "body": [
+      "%${1:2}(${2:prop-a}, ${3:prop-b} [: ${4:value};])"
+    ],
+    "description": "Set N properties to the same value in one shorthand call"
+  },
+
+
+  "FSCSS Object": {
+    "prefix": "obj",
+    "body": [
+      "@obj ${1:name}{ ${2:properties} }"
+    ],
+    "description": "Define a reusable @obj style object"
+  },
+
+
+  "FSCSS exec log": {
+    "prefix": "exe",
+    "body": [
+      "exec(_log, '${1:message}')"
+    ],
+    "description": "Console log for debugging FSCSS at compile time"
+  },
+
+  "FSCSS exec warn": {
+    "prefix": "exew",
+    "body": [
+      "exec(_warn, '${1:message}')"
+    ],
+    "description": "Console warn for debugging FSCSS at compile time"
+  },
+
+  "FSCSS Math Eval": {
+    "prefix": "num",
+    "body": [
+      "num(${1:expression})"
+    ],
+    "description": "Evaluate a math expression, e.g. num(100/4)"
+  },
+
+  "FSCSS Number Range": {
+    "prefix": "cou",
+    "body": [
+      "count(${1:end},${2:1})"
+    ],
+    "description": "Generate a comma-separated number range from start to end"
+  },
+
+  "FSCSS Repeat Value": {
+    "prefix": "rpt",
+    "body": [
+      "rpt(${1:count}, '${2:value}')"
+    ],
+    "description": "Repeat a string or value N times"
+  },
+
+  "FSCSS Copy Value": {
+    "prefix": "cpy",
+    "body": [
+      "copy(${1:length}, ${2:var-name})"
+    ],
+    "description": "Copy a value from another property in the same block"
+  },
+
+  "FSCSS String Extract": {
+    "prefix": "ext",
+    "body": [
+      "@ext(${1:variable}, ${2:start}, ${3:length})"
+    ],
+    "description": "Extract a substring from an FSCSS variable"
+  },
+
+
+  "FSCSS Attribute Selector": {
+    "prefix": "attr",
+    "body": [
+      "\\$(${1:attribute}:${2:value}){",
       "  ${3}",
       "}"
     ],
-    "description": "Keyframes shorthand"
+    "description": "Shorthand for attribute-based selectors"
   },
-  
-  "FSCSS Shorthand %": {
-    "prefix": "pct",
+
+  "FSCSS Event Logic": {
+    "prefix": "even",
     "body": [
-      "%${1:number}(${2:properties}[:${3:value};])"
+      "@event ${1:name}(${2:param}){",
+      "  if ${2:param}:${3:value}{",
+      "    return: ${4:result};",
+      "  }",
+      "  el-if ${2:param}:${5:value}{",
+      "    return: ${6:result};",
+      "  }",
+      "  el{",
+      "    return: ${7:result};",
+      "  }",
+      "}"
     ],
-    "description": "FSCSS shorthand function"
+    "description": "Conditional styling logic using FSCSS @event if/el-if/el"
+  },
+
+
+  "FSCSS HTML Script Tag": {
+    "prefix": "fscript",
+    "body": [
+      "/* <script src=\"https://cdn.jsdelivr.net/npm/fscss@${1:latest}/exec.min.js\" defer></script> */"
+    ],
+    "description": "CDN script tag to include the FSCSS runtime in HTML"
+  },
+
+  "FSCSS @define + @use pattern": {
+    "prefix": "defuse",
+    "body": [
+      "@define ${1:mixin}(${2:elem}){",
+      "  @use(${2:elem}){",
+      "    ${3}",
+      "  }",
+      "}",
+      "",
+      "@${1:mixin}(${4:.selector})"
+    ],
+    "description": "Full @define + @use mixin pattern with immediate invocation"
+  },
+
+  "FSCSS Themed Array + Random": {
+    "prefix": "theme",
+    "body": [
+      "@arr ${1:palette}[${2:#color1, #color2, #color3}]",
+      "",
+      "${3:selector}{",
+      "  background: @random(@arr.${1:palette});",
+      "}"
+    ],
+    "description": "Declare a color array and apply a random value to a selector"
   }
 }
-

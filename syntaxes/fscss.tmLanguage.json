@@ -11,7 +11,7 @@
 
     {
       "comment": "FSCSS control directives",
-      "match": "@(define|import|arr|use|random|ext|event|fun)\\b",
+      "match": "@(define|import|arr|use|random|ext|event|fun|obj)\\b",
       "name": "keyword.control.fscss"
     },
     {

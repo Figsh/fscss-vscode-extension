@@ -147,7 +147,7 @@
     "prefix": "arrl",
     "body": [
       "${1:selector-}@arr.${2:name}[]{",
-      "  property: @arr.${2:name};",
+      "  property: @arr.${2:name}[];",
       "}"
     ],
     "description": "Generate iterative CSS blocks from every array item"

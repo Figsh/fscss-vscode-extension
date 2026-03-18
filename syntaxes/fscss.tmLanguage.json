@@ -11,29 +11,21 @@
 
         {
       "comment": "FSCSS define function name",
-      "match": "@define\\s+([a-zA-Z_][a-zA-Z0-9_-]*)",
+      "match": "@(define|arr|obj|event)\\s+([a-zA-Z_][a-zA-Z0-9_-]*)",
       "captures": {
-        "1": { "name": "entity.name.function.fscss" }
+        "1": {"name": "keyword.control.fscss"}, 
+        "2": { "name": "entity.name.function.fscss" }
       }
     },
     {
       "comment": "FSCSS control directives",
-      "match": "@(define|import|arr|use|random|ext|event|fun|obj)\\b",
+      "match": "@(import|use|random|ext|fun)\\b",
       "name": "keyword.control.fscss"
     },
     {
       "comment": "FSCSS custom/generic functions",
-      "match": "@[a-zA-Z0-9_-]+(?=\\s*\\()",
-      "name": "keyword.function.fscss"
-    },
-    {
-      "comment": "FSCSS array declaration",
-      "match": "@arr\\s+([a-zA-Z_][a-zA-Z0-9_-]*)",
-      "captures": {
-        "1": {
-          "name": "variable.other.array.fscss"
-        }
-      }
+      "match": "@[a-zA-Z_][a-zA-Z0-9_-]+(?=\\s*\\()",
+      "name": "entity.name.function.fscss"
     },
 
     {
@@ -44,33 +36,21 @@
 
     {
       "comment": "FSCSS method helpers",
-      "match": "\\.(length|last|reverse|first|list|indices|randint|segment|map|sum|unique|sort|shuffle|min|max|obj|xfscss)",
+      "match": "\\.(length|last|reverse|first|list|indices|randint|segment|map|sum|unique|sort|shuffle|min|max|obj|xfscss)\\b",
       "name": "entity.name.function.method.fscss"
     },
-
-    {
-      "comment": "FSCSS variables with optional force operator",
-      "match": "\\$(\\/)?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
-      "captures": {
-        "0": {
-          "name": "variable.other.fscss"
-        },
-        "1": {
-          "name": "keyword.operator.force.fscss"
-        }
-      }
-    },
-
+{
+  "comment": "FSCSS variables with optional force operator",
+  "match": "\\$\\/?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
+  "captures": {
+    "0": { "name": "variable.other.fscss" },
+    "1": { "name": "keyword.operator.force.fscss" }
+  }
+}, 
     {
       "comment": "Special keywords",
       "match": "\\b(_init|if|el-if|el|return|_log|from|as|to)\\b",
       "name": "keyword.other.special.fscss"
-    },
-
-    {
-      "comment": "Force operator",
-      "match": "!",
-      "name": "keyword.operator.force.fscss"
     },
     
      {
@@ -141,4 +121,5 @@
 
   ]
 }
+
 

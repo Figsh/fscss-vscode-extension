@@ -63,7 +63,7 @@
 
     {
       "comment": "Special keywords",
-      "match": "\\b(_init|if|el-if|el|return|_log|from|as)\\b",
+      "match": "\\b(_init|if|el-if|el|return|_log|from|as|to)\\b",
       "name": "keyword.other.special.fscss"
     },
 

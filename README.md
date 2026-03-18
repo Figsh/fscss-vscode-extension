@@ -1,94 +1,151 @@
 # FSCSS VS Code Extension
 
-Official Visual Studio Code support for **FSCSS** (Figured Shorthand Cascading Style Sheets).
+Official Visual Studio Code support for **FSCSS (Figured Shorthand Cascading Style Sheets)**.
 
-This extension improves the development experience when writing `.fscss` files by adding syntax highlighting, snippets, and automatic compilation.
-
----
-
-## Features
-
-**Syntax Highlighting**
-
-Provides dedicated syntax highlighting for FSCSS files including:
-
-- `@define`
-- `@import`
-- `@arr`
-- `@use`
-- built-in functions like `exec()`, `find()`, `join()`
-- shorthand functions like `%2(...)`
-- variables such as `$color`
-- FSCSS method helpers like `.randint`, `.list`
-
-CSS syntax is also supported automatically, so standard CSS rules still highlight correctly.
+This extension brings a powerful developer experience for writing `.fscss` with syntax highlighting, advanced snippets, and compilation support.
 
 ---
 
-**Code Snippets**
+# Features
 
-Quickly generate common FSCSS structures.
+## Syntax Highlighting
 
-**Example snippet triggers:**
+**Full FSCSS-aware highlighting including:**
 
-Trigger| Expands To
-`def`| `@define name(args){}`
-`arr`| `@arr name[values]`
-`imp`| `@import((module) from "path")`
-`use`| `@use(selector){}`
-`pct`| `%2(property,value)`
+- `@define`, `@fun`, `@obj`
+- `@import`, `@use`
+- `@arr`, `@event`
+- Built-in functions like `exec()`, `num()`, `rpt()`, `copy()`
+- Shorthand helpers like `%2(...)`
+- Variables like `$color`
+- Method helpers like `.randint`, `.list`, `.join`
+
+> Works alongside standard CSS — no conflicts.
 
 ---
 
-**FSCSS Compilation**
+## Advanced Code Snippets
 
-Compile FSCSS directly inside VS Code.
+Write FSCSS faster than ever using powerful snippets.
+
+Core Snippets
+
+Trigger| Description
+`def`| Create `@define` function
+`defc`| Call defined function
+`fun`| Create `@fun` block
+`obj`| Create `@obj` style object
+`use`| Use selector inside define
+
+---
+
+Imports
+
+Trigger| Description
+`imp`| Import module
+`impm`| Multi import
+`impa`| Alias import
+`impw`| Import all (`*`)
+`impr`| Import from URL
+
+---
+
+Variables & Strings
+
+Trigger| Description
+`var`| Declare variable
+`varu`| Use variable
+`str`| Create string prompt
+`stru`| Use string variable
+
+---
+
+Arrays & Randomization
+
+Trigger| Description
+`arr`| Create array
+`arrl`| Loop through array
+`arrr`| Random per element
+`arrri`| Global random
+`ajon`| Join array
+`arls`| Output list
+`rand`| Inline random
+`randa`| Random from array
+
+---
+
+Utilities & Logic
+
+Trigger| Description
+`num`| Math evaluation
+`cou`| Number range
+`rpt`| Repeat values
+`cpy`| Copy value
+`ext`| Extract string
+`even`| Conditional logic (`@event`)
+
+---
+
+Animation & Selectors
+
+Trigger| Description
+`key`| Keyframes (single selector)
+`keym`| Keyframes (multi selector)
+`attr`| Attribute selector
+
+---
+
+Debugging
+
+Trigger| Description
+`exe`| Console log
+`exew`| Console warn
+
+---
+
+## FSCSS Compilation
+
+**Compile FSCSS directly inside VS Code.**
 
 Command:
 
 `FSCSS: Compile`
 
-The extension will:
+**This will:**
 
 1. Read the current `.fscss` file
-2. Use the installed FSCSS compiler
-3. Generate CSS output
+2. Run the FSCSS compiler
+3. Output CSS
 
 ---
 
-**Auto Compile on Save**
+##  Auto Compile on Save
 
-When a `.fscss` file is saved, the extension automatically generates a CSS file.
+When you save a `.fscss` file:
 
-Example:
+style.fscss → style.css
 
-`style.fscss`
-
-becomes
-
-`style.css`
-
-This allows FSCSS to integrate easily with normal HTML projects.
+Perfect for real-time development.
 
 ---
 
-**Requirements**
+##  Requirements
 
-You must install the FSCSS compiler.
+**Install FSCSS compiler:**
 
-Global install:
+Global
 
 `npm install -g fscss`
 
-Or install in your project:
+Project
 
 `npm install fscss`
 
 ---
 
-**Example**
+## Example
 
-Example FSCSS:
+FSCSS
 ```
 @define center(elem){
   @use(elem){
@@ -98,10 +155,9 @@ Example FSCSS:
   }
 }
 
-  @center(.box)
+@center(.box)
 ```
-
-Compiled CSS:
+Output CSS
 ```
 .box{
   display:flex;
@@ -111,25 +167,57 @@ Compiled CSS:
 ```
 ---
 
-**Extension Commands**
+## 📂 Supported Files
+
+- `.fscss`
+- `.xfscss`
+
+---
+
+## 🛠 Commands
 
 Command| Description
-`FSCSS: Compile`| Compile the current FSCSS file
+"FSCSS: Compile"| Compile current file
 
 ---
 
-**File Support**
+## About FSCSS
 
-The extension activates automatically for:
-
-`.fscss`
-
-files.
-
----
-
-About FSCSS
+Learn more:
 
 https://fscss.devtem.org
 
 ---
+
+##  Roadmap
+
+Planned improvements:
+
+- IntelliSense (auto-complete FSCSS methods)
+- Error diagnostics
+- Live preview
+- Inline compiler feedback
+- Performance optimizations
+
+---
+
+## Contributing
+
+Feel free to contribute, suggest features, or report issues.
+
+GitHub:
+https://github.com/Figsh/fscss-vscode-extension
+
+---
+
+## ❤️ Support
+
+If you like FSCSS, consider:
+
+- Starring the repo
+- Sharing the extension
+- Writing about it
+
+---
+
+**Happy coding with FSCSS**

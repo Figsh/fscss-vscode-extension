@@ -27,8 +27,8 @@
         "extensions": [".fscss", ".xfscss"],
         "configuration": "./language-configuration.json",
         "icon": {
-          "light": "icons/fscss-logo.png",
-          "dark": "icons/fscss-logo.png"
+          "light": "icons/fscss-icon.png",
+          "dark": "icons/fscss-icon.png"
         }
       }
     ],

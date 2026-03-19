@@ -32,7 +32,7 @@ async function activate(context) {
         const editor = vscode.window.activeTextEditor;
         if (!editor) return;
         
-        if (editor.document.languageId !== 'fscss') {
+        if (editor.document.languageId !== 'fscss'||editor.document.languageId !== 'xfscss') {
             vscode.window.showErrorMessage("This command only works with .fscss files.");
             return;
         }
@@ -40,7 +40,7 @@ async function activate(context) {
         const inputPath = editor.document.uri.fsPath;
         const projectFolder = path.dirname(inputPath);
         // Create a output path for the preview
-        const outputPath = inputPath.replace(/\.fscss$/, '.preview.css');
+        const outputPath = inputPath.replace(/\.fscss$/, '.fscss.css');
 
         try {
             await runFscssCli(inputPath, outputPath, projectFolder);
@@ -68,7 +68,7 @@ async function activate(context) {
         
         const inputPath = doc.uri.fsPath;
         const projectFolder = path.dirname(inputPath);
-        const outputPath = inputPath.replace(/\.fscss$/, '.css');
+        const outputPath = inputPath.replace(/\.fscss$/, '.fscss.css');
 
         try {
             await runFscssCli(inputPath, outputPath, projectFolder);

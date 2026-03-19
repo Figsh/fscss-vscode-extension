@@ -11,31 +11,34 @@
   "repository": {
 
     "comments": {
+      "comment": "Double slash comments",
       "match": "//.*$",
       "name": "comment.line.double-slash.fscss"
     },
 
     "fscss-expressions": {
       "patterns": [
-                {
+
+        {
+          "comment": "Property names — FIRST, beats CSS fallback",
+          "match": "\\b([a-zA-Z][a-zA-Z0-9-]*)(?=\\s*:)",
+          "name": "support.type.property-name.css"
+        },
+
+        {
+          "comment": "FSCSS variables with optional force operator",
+          "match": "\\$\\/?[a-zA-Z_][a-zA-Z0-9_-]*\\s*(!)?",
+          "captures": {
+            "0": { "name": "variable.other.fscss" },
+            "1": { "name": "keyword.operator.force.fscss" }
+          }
+        },
+
+        {
           "comment": "Special keywords",
           "match": "\\b(_init|if|el-if|el|return|_log|from|as|to)\\b",
           "name": "keyword.other.special.fscss"
         },
-        {
-      "comment": "Property names",
-      "match": "\\b([a-zA-Z][a-zA-Z0-9-]*)(?=\\s*:)",
-      "name": "support.type.property-name.css"
-    },
-
-    {
-      "comment": "FSCSS variables — second, before anything else claims $",
-      "match": "\\$\\/?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
-      "captures": {
-        "0": { "name": "variable.other.fscss" },
-        "1": { "name": "keyword.operator.force.fscss" }
-      }
-    },
 
         {
           "comment": "FSCSS define + name (two-tone)",
@@ -47,7 +50,7 @@
         },
 
         {
-          "comment": "FSCSS dot-access call e.g. @arr.colors @obj.theme",
+          "comment": "FSCSS dot-access e.g. @arr.colors @obj.theme",
           "match": "@(arr|event|obj)\\.([a-zA-Z_][a-zA-Z0-9_-]+)\\b",
           "captures": {
             "1": { "name": "keyword.control.fscss" },
@@ -57,13 +60,13 @@
 
         {
           "comment": "FSCSS control directives",
-          "match": "(?:@(import|use|random|ext|fun)|(-\\*))\\b",
+          "match": "@(import|use|random|ext|fun)\\b",
           "name": "keyword.control.fscss"
         },
 
         {
           "comment": "FSCSS custom/generic function calls e.g. @button()",
-          "match": "@[a-zA-Z_][a-zA-Z0-9_-]+(?=\\s*\\()",
+          "match": "@[a-zA-Z_][a-zA-Z0-9_-]+(?=\\()",
           "name": "entity.name.function.fscss"
         },
 
@@ -74,7 +77,7 @@
         },
 
         {
-          "comment": "FSCSS method helpers e.g. .randint .list .join",
+          "comment": "FSCSS method helpers e.g. .randint .list",
           "match": "\\.(length|last|reverse|first|list|indices|randint|segment|map|sum|unique|sort|shuffle|min|max|obj|xfscss)\\b",
           "name": "entity.name.function.method.fscss"
         },
@@ -84,6 +87,7 @@
           "match": "\\|\\|",
           "name": "keyword.variable.fallback.fscss"
         },
+
         {
           "comment": "FSCSS shorthand %n e.g. %2(...)",
           "match": "%[0-9]+(?=\\()",
@@ -111,7 +115,7 @@
         },
 
         {
-          "comment": "Backtick CSS injection",
+          "comment": "Backtick CSS injection with FSCSS support",
           "name": "string.template.fscss",
           "begin": "`",
           "beginCaptures": {
@@ -134,7 +138,7 @@
     },
 
     "paren": {
-      "comment": "Parenthesis context — FSCSS expressions highlighted inside (...)",
+      "comment": "Parenthesis context — FSCSS inside (...)",
       "begin": "\\(",
       "end": "\\)",
       "beginCaptures": {
@@ -153,7 +157,7 @@
     },
 
     "block": {
-      "comment": "Block context — FSCSS expressions highlighted inside {...}",
+      "comment": "Block context — FSCSS inside {...}",
       "begin": "\\{",
       "end": "\\}",
       "beginCaptures": {
@@ -173,3 +177,4 @@
 
   }
 }
+

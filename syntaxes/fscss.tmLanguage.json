@@ -10,10 +10,17 @@
   "repository": {
 
     "comments": {
-      "comment": "Double slash comments",
-      "match": "//.*$",
-      "name": "comment.line.double-slash.fscss"
-    },
+  "comment": "FSCSS block comments",
+  "begin": "/\\*",
+  "end": "\\*/",
+  "beginCaptures": {
+    "0": { "name": "punctuation.definition.comment.fscss" }
+  },
+  "endCaptures": {
+    "0": { "name": "punctuation.definition.comment.fscss" }
+  },
+  "name": "comment.block.fscss"
+},
 
     "fscss-expressions": {
       "patterns": [

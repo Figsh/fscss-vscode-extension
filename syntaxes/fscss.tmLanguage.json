@@ -17,6 +17,25 @@
 
     "fscss-expressions": {
       "patterns": [
+                {
+          "comment": "Special keywords",
+          "match": "\\b(_init|if|el-if|el|return|_log|from|as|to)\\b",
+          "name": "keyword.other.special.fscss"
+        },
+        {
+      "comment": "Property names",
+      "match": "\\b([a-zA-Z][a-zA-Z0-9-]*)(?=\\s*:)",
+      "name": "support.type.property-name.css"
+    },
+
+    {
+      "comment": "FSCSS variables — second, before anything else claims $",
+      "match": "\\$\\/?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
+      "captures": {
+        "0": { "name": "variable.other.fscss" },
+        "1": { "name": "keyword.operator.force.fscss" }
+      }
+    },
 
         {
           "comment": "FSCSS define + name (two-tone)",
@@ -61,30 +80,10 @@
         },
 
         {
-  "comment": "FSCSS variables with optional force operator",
-  "match": "\\$\\/?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
-  "captures": {
-    "0": { "name": "variable.other.fscss" },
-    "1": { "name": "keyword.operator.force.fscss" }
-  }
-},
-
-        {
-          "comment": "Special keywords",
-          "match": "\\b(_init|if|el-if|el|return|_log|from|as|to)\\b",
-          "name": "keyword.other.special.fscss"
-        },
-
-        {
           "comment": "Variable fallback operator ||",
           "match": "\\|\\|",
           "name": "keyword.variable.fallback.fscss"
         },
-        {
-  "comment": "Property names — first before CSS fallback",
-  "match": "\\b([a-zA-Z-][a-zA-Z0-9-]*)(?=\\s*:)",
-  "name": "support.type.property-name.css"
-},
         {
           "comment": "FSCSS shorthand %n e.g. %2(...)",
           "match": "%[0-9]+(?=\\()",
@@ -174,5 +173,3 @@
 
   }
 }
-
-

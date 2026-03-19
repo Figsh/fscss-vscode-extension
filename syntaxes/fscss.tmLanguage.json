@@ -59,7 +59,7 @@
 
         {
           "comment": "FSCSS define + name (two-tone)",
-          "match": "@(define|arr|obj|event)\\s+([a-zA-Z_][a-zA-Z0-9_-]*)",
+          "match": "(@(?:define|arr|obj|event))\\s+([a-zA-Z_][a-zA-Z0-9_-]*)",
           "captures": {
             "1": { "name": "keyword.control.fscss" },
             "2": { "name": "entity.name.function.fscss" }
@@ -101,7 +101,7 @@
 
         {
           "comment": "CSS units and numeric values",
-          "match": "-?\\b\\d+(?:\\.\\d+)?(px|em|rem|ex|ch|vw|vh|vmin|vmax|%|deg|rad|grad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx|fr)\\b",
+          "match": "-?\\b\\d+(?:\\.\\d+)?(px|em|rem|ex|ch|pt|pc|vw|vh|vmin|vmax|%|deg|rad|grad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx|fr)\\b",
           "name": "constant.numeric.css"
         },
 

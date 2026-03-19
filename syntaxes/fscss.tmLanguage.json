@@ -80,11 +80,11 @@
           "match": "\\|\\|",
           "name": "keyword.variable.fallback.fscss"
         },
-         {
-   "comment": "Some properties",
-   "match": "\\b([a-zA-Z-]+)(?=\\:)",
-   "name": "support.type.property-name.css"
- },
+        {
+  "comment": "Property names — first before CSS fallback",
+  "match": "\\b([a-zA-Z-][a-zA-Z0-9-]*)(?=\\s*:)",
+  "name": "support.type.property-name.css"
+},
         {
           "comment": "FSCSS shorthand %n e.g. %2(...)",
           "match": "%[0-9]+(?=\\()",

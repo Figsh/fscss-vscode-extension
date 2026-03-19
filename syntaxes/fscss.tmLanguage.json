@@ -1,4 +1,5 @@
-"name": "FSCSS",
+{
+  "name": "FSCSS",
   "scopeName": "source.fscss",
   "patterns": [
     { "include": "#comments" },

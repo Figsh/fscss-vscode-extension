@@ -3,7 +3,7 @@
   "displayName": "FSCSS Support",
   "publisher": "figsh",
   "description": "Syntax highlighting and tools for FSCSS",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "engines": {
     "vscode": "^1.80.0"
   },

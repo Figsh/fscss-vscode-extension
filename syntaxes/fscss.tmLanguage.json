@@ -18,26 +18,35 @@
       }
     },
     {
+  "comment": "FSCSS initial Function call",
+  "match": "@(arr|event|obj)\\.([a-zA-Z_][a-zA-Z0-9_-]+)\\b",
+  "captures": {
+    "1": { "name": "keyword.control.fscss" },
+    "2": { "name": "entity.name.function.fscss" }
+  }
+},
+    {
       "comment": "FSCSS control directives",
       "match": "@(import|use|random|ext|fun)\\b",
       "name": "keyword.control.fscss"
     },
     {
+  "comment": "FSCSS initial Function call",
+  "match": "@(arr|event|obj)\\.([a-zA-Z_][a-zA-Z0-9_-]+)\\b",
+ "captures": {
+   "1": { "name": "keyword.control.fscss" },
+   "2": { "name": "entity.name.function.fscss" }
+ }
+},
+    {
       "comment": "FSCSS custom/generic functions",
       "match": "@[a-zA-Z_][a-zA-Z0-9_-]+(?=\\s*\\()",
       "name": "entity.name.function.fscss"
     },
-
     {
       "comment": "FSCSS built-in functions",
       "match": "\\b(exec|find|pick|length|count|copy|str|re|store|join|prefix|surround|unit|block|num|rpt|mx|mxs)(?=\\s*\\()",
       "name": "support.function.fscss"
-    },
-
-    {
-      "comment": "FSCSS method helpers",
-      "match": "\\.(length|last|reverse|first|list|indices|randint|segment|map|sum|unique|sort|shuffle|min|max|obj|xfscss)\\b",
-      "name": "entity.name.function.method.fscss"
     },
 {
   "comment": "FSCSS variables with optional force operator",

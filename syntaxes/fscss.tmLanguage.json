@@ -38,7 +38,7 @@
 
         {
           "comment": "FSCSS control directives",
-          "match": "@(import|use|random|ext|fun)\\b",
+          "match": "(?:@(import|use|random|ext|fun)|(-\\*))\\b",
           "name": "keyword.control.fscss"
         },
 
@@ -61,13 +61,13 @@
         },
 
         {
-          "comment": "FSCSS variables with optional force operator e.g. $color $color!",
-          "match": "\\$\\/?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
-          "captures": {
-            "0": { "name": "variable.other.fscss" },
-            "1": { "name": "keyword.operator.force.fscss" }
-          }
-        },
+  "comment": "FSCSS variables with optional force operator",
+  "match": "\\$\\/?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
+  "captures": {
+    "0": { "name": "variable.other.fscss" },
+    "1": { "name": "keyword.operator.force.fscss" }
+  }
+},
 
         {
           "comment": "Special keywords",
@@ -80,7 +80,11 @@
           "match": "\\|\\|",
           "name": "keyword.variable.fallback.fscss"
         },
-
+         {
+   "comment": "Some properties",
+   "match": "\\b([a-zA-Z-]+)(?=\\:)",
+   "name": "support.type.property-name.css"
+ },
         {
           "comment": "FSCSS shorthand %n e.g. %2(...)",
           "match": "%[0-9]+(?=\\()",
@@ -170,4 +174,5 @@
 
   }
 }
+
 

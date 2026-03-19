@@ -8,18 +8,28 @@
     { "include": "#paren" }
   ],
   "repository": {
+
     "comments": {
       "comment": "Double slash comments",
       "match": "//.*$",
       "name": "comment.line.double-slash.fscss"
     },
+
     "fscss-expressions": {
       "patterns": [
+
         {
-          "comment": "Property names — Improved to catch prefixes and maintain priority",
-          "match": "(?<![-])\\b([-a-zA-Z_][-a-zA-Z0-9_]*)(?=\\s*:)",
+          "comment": "CSS pseudo-classes and pseudo-elements",
+          "match": "::?[a-zA-Z\\-]+(?![a-zA-Z0-9\\-])",
+          "name": "entity.other.pseudo-class.css"
+        },
+
+        {
+          "comment": "Property names — CSS and FSCSS, first to beat everything",
+          "match": "\\b([-a-zA-Z_][-a-zA-Z0-9_]*)(?=\\s*:)",
           "name": "support.type.property-name.css"
         },
+
         {
           "comment": "FSCSS variables with optional force operator",
           "match": "\\$\\/?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
@@ -28,11 +38,25 @@
             "1": { "name": "keyword.operator.force.fscss" }
           }
         },
+
+        {
+          "comment": "CSS custom properties",
+          "match": "--[a-zA-Z_][a-zA-Z0-9_-]*",
+          "name": "variable.css"
+        },
+
         {
           "comment": "Special keywords",
           "match": "\\b(_init|if|el-if|el|return|_log|from|as|to)\\b",
           "name": "keyword.other.special.fscss"
         },
+
+        {
+          "comment": "CSS at-rules",
+          "match": "@(media|keyframes|font-face|page|supports|namespace|charset)\\b",
+          "name": "keyword.control.at-rule.css"
+        },
+
         {
           "comment": "FSCSS define + name (two-tone)",
           "match": "@(define|arr|obj|event)\\s+([a-zA-Z_][a-zA-Z0-9_-]*)",
@@ -41,6 +65,7 @@
             "2": { "name": "entity.name.function.fscss" }
           }
         },
+
         {
           "comment": "FSCSS dot-access e.g. @arr.colors @obj.theme",
           "match": "@(arr|event|obj)\\.([a-zA-Z_][a-zA-Z0-9_-]+)\\b",
@@ -49,35 +74,93 @@
             "2": { "name": "entity.name.function.fscss" }
           }
         },
+
         {
           "comment": "FSCSS control directives",
           "match": "@(import|use|random|ext|fun)\\b",
           "name": "keyword.control.fscss"
         },
+
         {
           "comment": "FSCSS custom/generic function calls e.g. @button()",
-          "match": "@[a-zA-Z_][a-zA-Z0-9_-]+(?=\\()",
+          "match": "@[a-zA-Z_][a-zA-Z0-9_-]+(?=\\s*\\()",
           "name": "entity.name.function.fscss"
         },
+
         {
-          "comment": "FSCSS built-in functions",
-          "match": "\\b(exec|find|pick|length|count|copy|str|re|store|join|prefix|surround|unit|block|num|rpt|mx|mxs)(?=\\s*\\()",
+          "comment": "FSCSS and CSS built-in functions",
+          "match": "\\b(exec|find|pick|length|count|copy|str|re|store|join|prefix|surround|unit|block|num|rpt|mx|mxs|linear-gradient|radial-gradient|repeating-linear-gradient|repeating-radial-gradient|conic-gradient|repeating-conic-gradient|var|calc|min|max|clamp|rgb|rgba|hsl|hsla|hwb|lch|lab|color-mix|color|url|attr|counter|counters|element|image-set|fit-content|minmax|repeat|steps|cubic-bezier|matrix|translate|translateX|translateY|translateZ|scale|scaleX|scaleY|scaleZ|rotate|rotateX|rotateY|rotateZ|skew|skewX|skewY|perspective)(?=\\s*\\()",
           "name": "support.function.fscss"
         },
+
         {
-          "comment": "FSCSS method helpers e.g. .randint .list",
+          "comment": "FSCSS method helpers",
           "match": "\\.(length|last|reverse|first|list|indices|randint|segment|map|sum|unique|sort|shuffle|min|max|obj|xfscss)\\b",
           "name": "entity.name.function.method.fscss"
         },
+
         {
+          "comment": "CSS units and numeric values",
+          "match": "-?\\b\\d+(?:\\.\\d+)?(px|em|rem|ex|ch|vw|vh|vmin|vmax|%|deg|rad|grad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx|fr)\\b",
+          "name": "constant.numeric.css"
+        },
+
+        {
+          "comment": "Plain numbers",
+          "match": "\\b-?\\d+(?:\\.\\d+)?\\b",
+          "name": "constant.numeric.css"
+        },
+
+        {
+          "comment": "CSS hex colors",
+          "match": "#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?(?:[0-9a-fA-F]{2})?\\b",
+          "name": "constant.other.color.rgb.css"
+        },
+
+        {
+          "comment": "CSS color keywords",
+          "match": "\\b(aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkgrey|darkkhaki|darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkslategrey|darkturquoise|darkviolet|deeppink|deepskyblue|dimgray|dimgrey|dodgerblue|firebrick|floralwhite|forestgreen|fuchsia|gainsboro|ghostwhite|gold|goldenrod|gray|green|greenyellow|grey|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender|lavenderblush|lawngreen|lemonchiffon|lightblue|lightcoral|lightcyan|lightgoldenrodyellow|lightgray|lightgreen|lightgrey|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|lightslategrey|lightsteelblue|lightyellow|lime|limegreen|linen|magenta|maroon|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|navy|oldlace|olive|olivedrab|orange|orangered|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|powderblue|purple|rebeccapurple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|slategrey|snow|springgreen|steelblue|tan|teal|thistle|tomato|turquoise|violet|wheat|white|whitesmoke|yellow|yellowgreen|transparent|currentColor)\\b",
+          "name": "constant.other.color.css"
+        },
+
+        {
+          "comment": "CSS global and value keywords",
+          "match": "\\b(auto|initial|inherit|unset|revert|revert-layer|none|normal|bold|bolder|lighter|italic|oblique|underline|overline|line-through|solid|dashed|dotted|double|groove|ridge|inset|outset|hidden|visible|collapse|separate|scroll|fixed|local|no-repeat|repeat|repeat-x|repeat-y|round|space|cover|contain|border-box|padding-box|content-box|ellipsis|break-word|keep-all|loose|strict|inline|block|inline-block|flex|inline-flex|grid|inline-grid|table|inline-table|list-item|contents|flow|flow-root|start|end|left|right|center|justify|match-parent|baseline|first-baseline|last-baseline|safe|unsafe|stretch|flex-start|flex-end|self-start|self-end|space-between|space-around|space-evenly|row|row-reverse|column|column-reverse|wrap|nowrap|wrap-reverse|fill|max-content|min-content|fit-content|available|static|relative|absolute|sticky|clip|overlay|subgrid|dense|minmax|auto-fill|auto-fit|fr|content-box|border-box)\\b",
+          "name": "support.constant.css"
+        },
+
+        {
+          "comment": "CSS animation keywords",
+          "match": "\\b(ease|linear|ease-in|ease-out|ease-in-out|step-start|step-end|forwards|backwards|both|normal|reverse|alternate|alternate-reverse|infinite|paused|running)\\b",
+          "name": "support.constant.animation.css"
+        },
+
+        {
+          "comment": "CSS font names",
+          "match": "\\b(Arial|Helvetica|Georgia|Verdana|Tahoma|Impact|monospace|cursive|serif|sans-serif|system-ui|ui-serif|ui-sans-serif|ui-monospace|ui-rounded|emoji|math|fangsong)\\b",
+          "name": "support.constant.font-name.css"
+        },
+
+        {
+          "comment": "CSS important keyword",
+          "match": "!important\\b",
+          "name": "keyword.other.important.css"
+        },
+
+        {
+          "comment": "Variable fallback operator ||",
           "match": "\\|\\|",
           "name": "keyword.variable.fallback.fscss"
         },
+
         {
+          "comment": "FSCSS shorthand %n e.g. %2(...)",
           "match": "%[0-9]+(?=\\()",
           "name": "constant.numeric.fscss"
         },
+
         {
+          "comment": "Double-quoted strings",
           "name": "string.quoted.double.fscss",
           "begin": "\"",
           "end": "\"",
@@ -85,7 +168,9 @@
             { "name": "constant.character.escape.fscss", "match": "\\\\." }
           ]
         },
+
         {
+          "comment": "Single-quoted strings",
           "name": "string.quoted.single.fscss",
           "begin": "'",
           "end": "'",
@@ -93,7 +178,9 @@
             { "name": "constant.character.escape.fscss", "match": "\\\\." }
           ]
         },
+
         {
+          "comment": "Backtick CSS injection with FSCSS support",
           "name": "string.template.fscss",
           "begin": "`",
           "beginCaptures": {
@@ -110,30 +197,46 @@
             { "include": "#block" }
           ]
         }
+
       ]
     },
+
     "paren": {
+      "comment": "Parenthesis context — FSCSS inside (...)",
       "begin": "\\(",
       "end": "\\)",
-      "beginCaptures": { "0": { "name": "punctuation.section.parens.begin.fscss" } },
-      "endCaptures": { "0": { "name": "punctuation.section.parens.end.fscss" } },
+      "beginCaptures": {
+        "0": { "name": "punctuation.section.parens.begin.fscss" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.section.parens.end.fscss" }
+      },
       "patterns": [
         { "include": "#comments" },
         { "include": "#fscss-expressions" },
-        { "include": "#paren" }
+        { "include": "#paren" },
+        { "include": "#block" }
       ]
     },
+
     "block": {
+      "comment": "Block context — FSCSS inside {...}",
       "begin": "\\{",
       "end": "\\}",
-      "beginCaptures": { "0": { "name": "punctuation.section.block.begin.fscss" } },
-      "endCaptures": { "0": { "name": "punctuation.section.block.end.fscss" } },
+      "beginCaptures": {
+        "0": { "name": "punctuation.section.block.begin.fscss" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.section.block.end.fscss" }
+      },
       "patterns": [
         { "include": "#comments" },
         { "include": "#fscss-expressions" },
+        { "include": "#paren" },
         { "include": "#block" }
       ]
     }
+
   }
 }
-  
+

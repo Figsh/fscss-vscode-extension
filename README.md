@@ -147,13 +147,13 @@ Project
 
 FSCSS
 ```
-@define center(elem){
+@define center(elem){`
   @use(elem){
     display:flex;
     justify-content:center;
     align-items:center;
   }
-}
+`}
 
 @center(.box)
 ```

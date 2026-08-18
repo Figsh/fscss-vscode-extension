@@ -38,6 +38,12 @@
         },
 
         {
+          "comment": "FSCSS pattern() call — threshold, description, css injection",
+          "match": "\\bpattern(?=\\s*\\()",
+          "name": "keyword.control.pattern.fscss"
+        },
+
+        {
           "comment": "FSCSS variables with optional force operator",
           "match": "\\$\\/?[a-zA-Z_][a-zA-Z0-9_-]*(!)?",
           "captures": {

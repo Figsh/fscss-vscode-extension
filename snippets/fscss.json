@@ -31,6 +31,24 @@
     "description": "Use a str() prompt variable inline inside a selector block"
   },
 
+  "FSCSS Pattern": {
+    "prefix": "pattern",
+    "body": [
+      "pattern(${1:0.5}: \"${2:description}\", \\`",
+      "  ${3:css}",
+      "\\`)"
+    ],
+    "description": "Define a semantic pattern: confidence threshold, natural-language description, and CSS to inject"
+  },
+
+  "FSCSS Pattern Use": {
+    "prefix": "patu",
+    "body": [
+      "${1:matching phrase}"
+    ],
+    "description": "Use a pattern() by writing a bare phrase inside a selector block or standalone"
+  },
+
   "FSCSS Define Function": {
     "prefix": "def",
     "body": [
@@ -147,7 +165,7 @@
     "prefix": "arrl",
     "body": [
       "${1:selector-}@arr.${2:name}[]{",
-      "  property: @arr.${2:name}[];",
+      "  property: @arr.${2:name};",
       "}"
     ],
     "description": "Generate iterative CSS blocks from every array item"
@@ -371,3 +389,4 @@
     "description": "Declare a color array and apply a random value to a selector"
   }
 }
+

@@ -14,11 +14,11 @@ This extension brings a powerful developer experience for writing `.fscss` with 
 
 - `@define`, `pattern`, `@fun`, `@obj`
 - `@import`, `@use`
-- `@arr`, `@event`
-- Built-in functions like `exec()`, `num()`, `rpt()`, `copy()`
+- `@arr`, `@event`, `@random`
+- Built-in functions like `exec()`, `num()`, `rpt()`, `copy()`, `count()`, `inline()`
 - Shorthand helpers like `%2(...)`
 - Variables like `$color`
-- Method helpers like `.randint`, `.list`, `.join`
+- Method helpers like `.randint`, `.list`, `.join`, `.length`, `.reverse`
 
 > Works alongside standard CSS — no conflicts.
 

@@ -60,7 +60,7 @@
 
         {
           "comment": "Special keywords",
-          "match": "\\b(_init|if|el-if|el|return|_log|_warn|_info|_error|from|as|to)\\b",
+          "match": "\\b(_init|if|el-if|el|return|_log|_warn|_info|_error|from|as|to|default|export)\\b",
           "name": "keyword.other.special.fscss"
         },
 
@@ -102,7 +102,7 @@
 
         {
           "comment": "FSCSS and CSS built-in functions",
-          "match": "\\b(exec|find|pick|length|count|copy|str|re|store|join|prefix|surround|unit|block|num|rpt|mx|mxs|linear-gradient|radial-gradient|repeating-linear-gradient|repeating-radial-gradient|conic-gradient|repeating-conic-gradient|var|calc|min|max|clamp|rgb|rgba|hsl|hsla|hwb|lch|lab|color-mix|color|url|attr|counter|counters|element|image-set|fit-content|minmax|repeat|steps|cubic-bezier|matrix|translate|translateX|translateY|translateZ|scale|scaleX|scaleY|scaleZ|rotate|rotateX|rotateY|rotateZ|skew|skewX|skewY|perspective)(?=\\s*\\()",
+          "match": "\\b(cos|cin|inline|exec|find|pick|length|count|copy|str|re|store|join|prefix|surround|unit|block|num|rpt|mx|mxs|linear-gradient|radial-gradient|repeating-linear-gradient|repeating-radial-gradient|conic-gradient|repeating-conic-gradient|var|calc|min|max|clamp|rgb|rgba|hsl|hsla|hwb|lch|lab|color-mix|color|url|attr|counter|counters|element|image-set|fit-content|minmax|repeat|steps|cubic-bezier|matrix|translate|translateX|translateY|translateZ|scale|scaleX|scaleY|scaleZ|rotate|rotateX|rotateY|rotateZ|skew|skewX|skewY|perspective)(?=\\s*\\()",
           "name": "support.function.fscss"
         },
 

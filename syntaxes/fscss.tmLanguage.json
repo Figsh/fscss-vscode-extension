@@ -51,19 +51,21 @@
             "1": { "name": "keyword.operator.force.fscss" }
           }
         },
-
         {
           "comment": "CSS custom properties",
           "match": "--[a-zA-Z_][a-zA-Z0-9_-]*",
           "name": "variable.css"
         },
-
         {
           "comment": "Special keywords",
           "match": "\\b(_init|if|el-if|el|return|_log|_warn|_info|_error|from|as|to|default|export)\\b",
           "name": "keyword.other.special.fscss"
         },
-
+        {
+          "comment": "FSCSS Escaped character",
+          "match": "\\\\([^0-9])",
+          "name": "support.constant.character.css"
+        },
         {
           "comment": "CSS at-rules",
           "match": "@(media|keyframes|font-face|page|supports|namespace|charset)\\b",
@@ -90,7 +92,7 @@
 
         {
           "comment": "FSCSS control directives",
-          "match": "@(import|use|random|ext|fun)\\b",
+          "match": "@(import|use|random|ext|fun|match)\\b",
           "name": "keyword.control.fscss"
         },
 
@@ -252,4 +254,3 @@
 
   }
 }
-

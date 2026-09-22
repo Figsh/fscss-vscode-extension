@@ -13,7 +13,7 @@ This extension brings a powerful developer experience for writing `.fscss` with 
 **Full FSCSS-aware highlighting including:**
 
 - `@define`, `pattern`, `@fun`, `@obj`
-- `@import`, `@use`
+- `@import`, `@use`, `@match`
 - `@arr`, `@event`, `@random`
 - Built-in functions like `exec()`, `num()`, `rpt()`, `copy()`, `count()`, `inline()`
 - Shorthand helpers like `%2(...)`
